@@ -8,6 +8,13 @@ from .models.schnet import SchNet
 
 
 def get_atom_indices(n_atoms, batch_size):
+    """
+    Get some relevant info for further processing for the atoms in the batch.
+    
+    :param n_atoms: number of atoms in the batch
+    :param batch_size: batch size
+    :return: atom indices, atom offsets, etc.
+    """
     n_distances = n_atoms ** 2 - n_atoms
     seg_m = np.repeat(range(batch_size), n_atoms).astype(np.int32)
     seg_i = np.repeat(np.arange(n_atoms * batch_size), n_atoms - 1).astype(np.int32)
@@ -72,6 +79,12 @@ class SchNetMD:
             self.force_model.restore(self.session, ckpt)
 
     def load_model(self, model_path):
+        """
+        Load a model from a given path.
+
+        :param model_path: path to the model
+        :return: model
+        """
         args = np.load(os.path.join(model_path, 'args.npy'), allow_pickle=True).item()
 
         model = SchNet(args.interactions, args.basis, args.filters, args.cutoff,
@@ -79,6 +92,12 @@ class SchNetMD:
         return model
 
     def get_energy_and_forces(self, positions):
+        """
+        Get the energy and forces for a given set of positions.
+        
+        :param positions: positions
+        :return: energy, forces
+        """
         positions = positions.reshape((-1, 3)).astype(np.float32)
         feed_dict = {
             self.positions: positions
@@ -87,6 +106,14 @@ class SchNetMD:
         return E, F
 
     def relax(self, positions, eps=0.01, rate=1e-4):
+        """
+        Relax a given set of positions.
+
+        :param positions: positions
+        :param eps: threshold for the error
+        :param rate: rate of relaxation
+        :return: relaxed positions
+        """
         err = 100.
         positions = positions.reshape((-1, 3)).astype(np.float32)
         print('Start relaxation')

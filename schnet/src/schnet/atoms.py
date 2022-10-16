@@ -7,6 +7,18 @@ class IsolatedAtomException(Exception):
 
 
 def stats_per_atom(data, numbers, is_per_atom, atom_ref=None):
+    '''
+      Given the per-atom statistics for a given property, this function
+      returns the sum or the mean of the values of the property on the 
+      basis of whether the property is intensive or extensive.
+
+    :param data: data corresponding to a given property
+    :param numbers: atomic numbers of the atoms in the system
+    :param is_per_atom: whether the property is intensive or extensive
+    :param atom_ref: reference atomic numbers for the property
+    :return: property prediction for the system (in terms of the actual values,
+             the function returns the mean along with the standard deviation)
+    '''
     Y = np.array(data)
     Y = Y.reshape((-1, 1))
     natoms = np.vstack([len(z) for z in numbers]).reshape((-1, 1))

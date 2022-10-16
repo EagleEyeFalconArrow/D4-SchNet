@@ -15,7 +15,22 @@ logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 
 
 def evaluate(model_path, data_path, indices, energy, forces, name, batch_size=100, atomref=None):
-    """main evaluator function"""
+    """
+    Evaluate energy and force errors for a given dataset and the corresponding predicted energies and forces. 
+    The difference between this file and the "train_energy_force" file is that here, the model has already
+    been trained and we are just passing this model to find the predicted energies and forces for the given data, 
+    whereas in "train_energy_force", we are training the model and then finding the predicted energies and forces.
+    
+    :param model_path: path to model
+    :param data_path: path to data
+    :param indices: indices of data to evaluate
+    :param energy: energy key
+    :param forces: forces key
+    :param name: name of dataset
+    :param batch_size: batch size
+    :param atomref: atom reference energies
+    :return: energy and force errors
+    """
     tf.reset_default_graph()
     checkpoint_dir = os.path.join(model_path, 'validation')
     ckpt = tf.train.latest_checkpoint(checkpoint_dir)

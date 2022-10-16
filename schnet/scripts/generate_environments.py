@@ -1,6 +1,5 @@
-"""
-general imports
-"""
+# In this file, we will generate the neighbouring list for the atoms in the system. This is a pre-processing step for the SchNet model.
+
 import argparse
 
 from schnet.data import generate_neighbor_dataset

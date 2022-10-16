@@ -3,7 +3,11 @@ from functools import wraps
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 
-
+# This file is more or less self-explanatory : It's the mathematical implementation of
+# the SchNet model. It follows the theory described in the research paper. The actual 
+# details of the implementation are a bit too involved for our current level of 
+# understanding of CNNs, and so we've refrained from explaining each and every single
+# parameter.
 
 class MetaModule(type):
     def __new__(cls, name, bases, local):

@@ -1,0 +1,11 @@
+{
+    "DockerRun.DisableDockerrc": true,
+    "cSpell.words": [
+        "fastapi",
+        "mdpred",
+        "mdpredictor",
+        "schnet",
+        "Streamlit",
+        "uploadfile"
+    ]
+}

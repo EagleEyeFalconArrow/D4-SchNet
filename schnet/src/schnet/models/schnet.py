@@ -186,6 +186,13 @@ class SchNet(L.Module):
 
 
 def print_shape(t, name=None):
+    """
+    Print the shape of a tensor. Used for debugging purposes.
+    
+    :param t: Tensor
+    :param name: Name of the tensor
+    :return: Prints the shape of the tensor
+    """
     if name is None:
         name = t.name
     return tf.Print(t, [tf.shape(t), t], summarize=20, message=name)

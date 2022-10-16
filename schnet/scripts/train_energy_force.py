@@ -1,6 +1,6 @@
-"""
-general imports
-"""
+# This is the main script which needs to be run, in which the model actually gets trained. 
+# Consequently, we then try to predict the energy and forces for the given dataset.
+
 import argparse
 import logging
 import os

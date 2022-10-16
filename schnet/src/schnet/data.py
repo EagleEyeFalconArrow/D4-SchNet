@@ -174,6 +174,13 @@ class ASEReader:
         return data
 
     def get_property(self, pname, idx):
+        """
+        Get property data for a given property name from given indices.
+
+        :param pname: property name
+        :param idx: indices for which the property is requested
+        :return: property data
+        """
         if type(idx) is int:
             idx = np.array([idx])
 
@@ -185,6 +192,12 @@ class ASEReader:
         return property
 
     def get_atomic_numbers(self, idx):
+        """
+        Get atomic number for given indices.
+
+        :param idx: indices for which the atomic numbers are requested
+        :return: atomic numbers
+        """
         if type(idx) is int:
             idx = np.array([idx])
 
@@ -195,6 +208,12 @@ class ASEReader:
         return numbers
 
     def get_number_of_atoms(self, idx):
+        """
+        Get number of atoms for given indices.
+
+        :param idx: indices for which the number of atoms are requested
+        :return: number of atoms
+        """
         if type(idx) is int:
             idx = np.array([idx])
 
@@ -241,6 +260,9 @@ class DataProvider:
         return len(self.indices)
 
     def create_threads(self, sess, coord=None, daemon=False, start=True):
+        """
+        Create threads for data provider. Utility function for tensorflow.
+        """
         if coord is None:
             coord = tf.train.Coordinator()
 
@@ -280,6 +302,12 @@ class DataProvider:
 
 
 def get_atoms_input(data):
+    """
+    Get atoms input for ASE model.
+
+    :param data: given data dictionary
+    :return: atoms input
+    """
     atoms_input = (
         data['numbers'], data['positions'], data['offset'], data['idx_ik'],
         data['idx_jk'], data['idx_j'], data['seg_m'], data['seg_i'],

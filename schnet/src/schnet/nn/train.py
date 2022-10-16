@@ -6,6 +6,10 @@ tf.disable_v2_behavior()
 
 from time import time
 
+# In this file, we actually train the neural network. The training is done in batches, and we use the Adam optimizer.
+# We also use the EarlyStopping class to stop the training if the validation loss doesn't decrease for a certain number of epochs.
+# The minute details of implementation are beyond our current level of understanding, and so we've refrained from explaining them.
+
 
 class EarlyStopping:
     def __init__(self, output_dir, model, train_op,

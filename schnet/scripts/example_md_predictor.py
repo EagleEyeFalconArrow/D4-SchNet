@@ -1,6 +1,7 @@
-"""
-classic import modules
-"""
+# In this file, given the path to an MD model, we print the energy and forces of the system (for the desired inputs). 
+# Also, depending on the input, we can choose to relax the positions of the molecules in the atomistic system as well.
+
+
 import os
 import argparse
 from ase.io import read, write

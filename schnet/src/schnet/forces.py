@@ -6,6 +6,13 @@ from schnet.data import get_atoms_input
 
 
 def predict_energy_forces(model, data):
+    """
+    Predict energy and forces for a batch of data.
+    
+    :param model: model to use for prediction
+    :param data: batch of data for which we need to predict energy and forces
+    :return: predicted energy and forces
+    """
     atoms_input = get_atoms_input(data)
     g = tf.get_default_graph()
     with g.gradient_override_map({"Tile": "TileDense"}):
@@ -16,6 +23,19 @@ def predict_energy_forces(model, data):
 
 def calculate_errors(Ep, Fp, data, energy_prop, force_prop,
                      rho, fit_energy=True, fit_forces=True):
+    """
+    Calculate the errors for the predicted values of energy and forces.
+
+    :param Ep: predicted energy
+    :param Fp: predicted forces
+    :param data: batch of data for which we need to predict the calculation errors
+    :param energy_prop: actual measured chemical energy
+    :param force_prop: actual measured forces
+    :param rho: weight of energy in the total loss
+    :param fit_energy: whether to fit the energy
+    :param fit_forces: whether to fit the forces
+    :return: loss and errors
+    """  
     loss = 0.
 
     if force_prop != 'none':
@@ -44,6 +64,14 @@ def calculate_errors(Ep, Fp, data, energy_prop, force_prop,
 
 
 def collect_summaries(args, loss, errors):
+    """
+    Collect the summaries for the loss and errors.
+    
+    :param args: arguments (i.e. the given data)
+    :param loss: loss
+    :param errors: errors
+    :return: total loss and summaries
+    """
     emse, emae, fmse, fmae = errors
     vloss = np.sum(loss)
 

@@ -1,6 +1,5 @@
-"""
-general imports
-"""
+# This is a utility function for downloading a popular dataset known as "QM9", which we can then use to train as well as test our model.
+
 import argparse
 import logging
 import os

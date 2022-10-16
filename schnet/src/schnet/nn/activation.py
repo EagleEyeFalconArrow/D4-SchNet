@@ -1,7 +1,7 @@
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 
-
+# Activation function for the neurons in the Neural Network. It's a softplus function (shifted).
 
 def _softplus(x):
     return tf.log1p(tf.exp(x))
