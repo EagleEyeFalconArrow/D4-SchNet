@@ -1,0 +1,20 @@
+FROM python:3.10.4
+RUN pip install --no-cache-dir torch
+ADD main.py .
+ADD model.py .
+ADD utils.py .
+ADD align_utils.py .
+ADD data_augmentation.py .
+ADD test_config.json .
+ADD train_config.json .
+ADD zinc zinc
+ADD analysis analysis
+ADD check_points check_points
+ADD generated_samples generated_samples
+RUN pip install matplotlib rdkit numpy docopt networkx joblib pandas fastapi pydantic uvicorn 
+RUN pip install streamlit
+#RUN python3 main.py --dataset zinc --config-file test_config.json --generation True --load_cpt ./check_points/pretrained_model.pickle
+#RUN python analysis/evaluate_generated_mols.py ZINC generated_samples/generated_smiles.smi zinc/smi_train.txt 1 True None analysis/wehi_pains.csv
+#" "& " "streamlit " "run" " frontend.py"
+ADD api.py .
+ENTRYPOINT ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8080"]

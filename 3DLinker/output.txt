@@ -1,0 +1,26 @@
+##### Start Settings #####
+Data set: ZINC
+Generated smiles file: generated_samples/generated_smiles.smi
+Training set: zinc/smi_train.txt
+Number of cores: 1
+Verbose: True
+Restrict data: None
+PAINS SMARTS location: analysis/wehi_pains.csv
+#####  End Settings  #####
+Number of generated SMILES: 3580
+Number of generated SMILES: 	3580
+Number of valid SMILES: 	3554
+% Valid: 			99.27%
+FAIL: CCCSC(=O)N(C)C(C1=CC=CC=C1SCC1CCCO1)C1=NC2=CC=CC=C2S1 Cc1nc2ccccc2s1.c1ccc(SC[C@H]2CCCO2)cc1 c1ccc([*:2])c(SC[C@H]2CCCO2)c1.c1ccc2sc(C[*:1])nc2c1
+Number of training examples: 417972
+Number of unique linkers: 5775
+Unique molecules: 76.98%
+Novel linkers: 32.53%
+Recovered: 57.82%
+Pass all 2D filters: 		90.74%
+Valid and pass all 2D filters: 	90.08%
+Pass synthetic accessibility (SA) filter: 	95.67%
+Pass ring aromaticity filter: 			94.79%
+Pass SA and ring filters: 			91.76%
+Pass PAINS filters: 				98.68%
+Aveage RMSD is 0.068152
